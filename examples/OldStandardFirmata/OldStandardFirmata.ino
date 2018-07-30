@@ -232,7 +232,7 @@ void loop()
      * analogReads().  These only need to be done every 4ms. */
     for (analogPin = 0; analogPin < TOTAL_ANALOG_PINS; analogPin++) {
       if ( analogInputsToReport & (1 << analogPin) ) {
-        Firmata.sendAnalog(analogPin, analogRead(analogPin));
+        Firmata.sendAnalog(analogPin, analogRead(A0 + analogPin));
       }
     }
   }

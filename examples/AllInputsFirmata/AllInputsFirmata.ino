@@ -78,7 +78,7 @@ void loop()
       Firmata.processInput();
     }
     for (pin = 0; pin < TOTAL_ANALOG_PINS; pin++) {
-      analogValue = analogRead(pin);
+      analogValue = analogRead(A0 + pin);
       if (analogValue != previousAnalogValues[pin]) {
         Firmata.sendAnalog(pin, analogValue);
         previousAnalogValues[pin] = analogValue;

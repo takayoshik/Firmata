@@ -87,7 +87,7 @@ void loop()
     previousMillis += 20;                   // run this every 20ms
     for (analogPin = 0; analogPin < TOTAL_ANALOG_PINS; analogPin++) {
       if ( analogInputsToReport & (1 << analogPin) )
-        Firmata.sendAnalog(analogPin, analogRead(analogPin));
+        Firmata.sendAnalog(analogPin, analogRead(A0 + analogPin));
     }
   }
 }

@@ -39,7 +39,7 @@ void loop()
   }
   // do one analogRead per loop, so if PC is sending a lot of
   // analog write messages, we will only delay 1 analogRead
-  Firmata.sendAnalog(analogPin, analogRead(analogPin));
+  Firmata.sendAnalog(analogPin, analogRead(A0 + analogPin));
   analogPin = analogPin + 1;
   if (analogPin >= TOTAL_ANALOG_PINS) analogPin = 0;
 }
