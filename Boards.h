@@ -851,6 +851,23 @@ writePort(port, value, bitmask):  Write an 8 bit port.
 #define PIN_TO_PWM(p)           (p)
 #define PIN_TO_SERVO(p)         (p)
 
+// SPRESENSE
+#elif defined(ARDUINO_ARCH_SPRESENSE)
+#define TOTAL_ANALOG_PINS       NUM_ANALOG_INPUTS // 6
+#define TOTAL_PINS              35 // 29 digital +  6 analog
+#define MAX_SERVOS              NUM_DIGITAL_PINS // All pins can be servo with SoftPWMservo
+#define VERSION_BLINK_PIN       PIN_LED0
+#define IS_PIN_DIGITAL(p)       ((p) >= 0 && (p) <= 28)
+#define IS_PIN_ANALOG(p)        ((p) >= 29 && (p) <= 35)
+#define IS_PIN_PWM(p)           ((p) == 6 || (p) == 5 || (p) == 9 || (p) == 3) // digitalPinHasPWM(p)
+#define IS_PIN_SERVO(p)         IS_PIN_DIGITAL(p)
+#define IS_PIN_I2C(p)           ((p) == SDA || (p) == SCL)
+#define IS_PIN_SPI(p)           ((p) == 10 || (p) == 11 || (p) == 12 || (p) == 13)
+#define PIN_TO_DIGITAL(p)       (p)
+#define PIN_TO_ANALOG(p)        (((p) - 29) + A0)
+#define PIN_TO_PWM(p)           (p)
+#define PIN_TO_SERVO(p)         (p)
+
 // anything else
 #else
 #error "Please edit Boards.h with a hardware abstraction for this board"
