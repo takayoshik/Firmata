@@ -889,6 +889,10 @@ writePort(port, value, bitmask):  Write an 8 bit port.
 #define DEFAULT_PWM_RESOLUTION  8
 #endif
 
+#ifndef _ANALOG_PIN
+#define _ANALOG_PIN(p)          (p)
+#endif
+
 /*==============================================================================
  * readPort() - Read an 8 bit port
  *============================================================================*/

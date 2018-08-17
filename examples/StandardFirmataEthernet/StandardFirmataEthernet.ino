@@ -528,7 +528,7 @@ void reportAnalogCallback(byte analogPin, int value)
         // Send pin value immediately. This is helpful when connected via
         // ethernet, wi-fi or bluetooth so pin states can be known upon
         // reconnecting.
-        Firmata.sendAnalog(analogPin, analogRead(A0 + analogPin));
+        Firmata.sendAnalog(analogPin, analogRead(_ANALOG_PIN(analogPin)));
       }
     }
   }
@@ -943,7 +943,7 @@ void loop()
       if (IS_PIN_ANALOG(pin) && Firmata.getPinMode(pin) == PIN_MODE_ANALOG) {
         analogPin = PIN_TO_ANALOG(pin);
         if (analogInputsToReport & (1 << analogPin)) {
-          Firmata.sendAnalog(analogPin, analogRead(A0 + analogPin));
+          Firmata.sendAnalog(analogPin, analogRead(_ANALOG_PIN(analogPin)));
         }
       }
     }
